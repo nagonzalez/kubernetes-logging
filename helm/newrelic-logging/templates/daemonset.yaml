@@ -1,6 +1,5 @@
 {{- if (include "newrelic-logging.areValuesValid" .) }}
-apiVersion: apps/v1beta2
-#apiVersion: apps/v1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels: {{ include "newrelic-logging.labels" . | indent 4 }}
@@ -56,7 +55,7 @@ spec:
                   key: {{ include "newrelic-logging.customSecretKey" . }}
                   {{- end }}
             - name: CLUSTER_NAME
-              value: {{ include "newrelic-logging.clusterName" . }} 
+              value: {{ include "newrelic-logging.clusterName" . }}
             - name: BUFFER_SIZE
               value: {{ .Values.fluentBit.bufferSize | quote }}
             - name: MAX_RECORDS
